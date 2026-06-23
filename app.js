@@ -9,9 +9,16 @@ const { createQueue } = require('@app-core/queue');
 
 const canLogEndpointInformation = process.env.CAN_LOG_ENDPOINT_INFORMATION;
 
-createConnection({
-  uri: process.env.MONGODB_URI,
-});
+async function initDb() {
+  const conn = await createConnection({
+    uri: process.env.MONGODB_URI,
+  });
+  console.log('DB INIT:', conn);
+}
+
+initDb();
+
+// createConnection({uri: process.env.MONGODB_URI});
 
 createQueue();
 
@@ -24,6 +31,9 @@ const server = createServer({
 const ENDPOINT_CONFIGS = [
   {
     path: './endpoints/onboarding/',
+  },
+  {
+    path: './endpoints/creator-card/',
   },
 ];
 

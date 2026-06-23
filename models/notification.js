@@ -10,6 +10,8 @@ const modelName = 'notifications';
  * @property {String} recipient
  * @property {String} subject
  * @property {Number} nextResendTimestamp
+ *
+ *
  * @property {Number} resendDelayMillis
  * @property {String} context
  * @property {String} type
